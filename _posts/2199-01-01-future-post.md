@@ -10,10 +10,7 @@ tags:
 
 Motivation:
 ======
-In the first part, I employ Gaussian Mixture Models (GMM) to cluster songs according to their audio features, and use decision trees to interpret these groupings. My aim is to explore the data and gain insight into how songs can be clustered.  
-
-In the second part, I use various natural language processing (NLP) techniques to recommend songs based on the podcast episode descriptions and different string representations of songs. The primary objective is to create a blend of podcast episodes and songs based on similar themes, topics, and overall mood. 
-
+This project used the Spotify API to obtain song and pocast data, as well as the Genius API to obtain song lyrics. This project involved clustering songs based on their Spotify audio features using Gaussian Mixture Models (GMM). Despite the natural approach to cluster by genre, the distribution of genres within each cluster did not exhibit discernible patterns. To interpret the clusters, decision trees were employed, with attention given to managing the tree's depth to balance interpretability and accuracy. This project also aimed to create a curated blend of podcast episodes and songs based on shared themes and moods. The process involved encoding podcast descriptions using a pre-trained sentence transform model and converting song data into textual representations, encompassing key audio features and summarized lyrical content
 
 The Data:
 ======  
