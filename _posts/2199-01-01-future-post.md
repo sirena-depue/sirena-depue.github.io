@@ -27,7 +27,7 @@ The 10 most recent episodes of the top 100 Spotify podcasts of 2023 were pulled.
 Songs:
 ------
 The Spotify API does not provide the genre of a specific song. Rather, there are genres associated with the artist and sometimes associated with an album. The genres can also be very specific and sometimes even specify the state or city, such as “Ohio Pop” and “Toronto Pop”. To simplify the data collection,  I downloaded and used the top 100 songs of various genres from [TopCharts](https://www.top-charts.com/songs/alternative/united-states/total/2021-W19) and [Shazam](https://www.shazam.com/charts/genre/united-states/country). This also guaranteed a collection of songs from less mainstream genres such as blues, jazz, and gospel. In total, the data for 1,405 songs were collected. The distribution of genres is shown below:  
-![Alt Text](/images/genres.jpg)
+![](/images/genres.jpg)
 
 Song Audio Features:
 ------
