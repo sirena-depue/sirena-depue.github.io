@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Sirena DePue"
+title                    : "About Me"
 title_separator          : "-"
 name                     : &name "Sirena DePue"
 description              : &description "Data Science at UT Austin | Previously MechE at Lockheed Martin"
@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Sirena DePue"
-  avatar           : "images/bio_photo.jpg"
+  avatar           : "/images/bio_photo.jpg"
   bio              : "Data Science at UT Austin | Previously MechE at Lockheed Martin"
   location         : "Cambridge, MA"
   employer         :
@@ -174,6 +174,19 @@ kramdown:
 
 
 # Collections
+collections:
+  teaching:
+    output: false
+    permalink: /:collection/:path/
+  publications:
+    output: false
+    permalink: /:collection/:path/
+  portfolio:
+    output: false
+    permalink: /:collection/:path/
+  talks:
+    output: false
+    permalink: /:collection/:path/
 
 
 
