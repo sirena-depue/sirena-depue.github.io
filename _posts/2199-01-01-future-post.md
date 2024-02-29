@@ -10,7 +10,6 @@ tags:
 
 Motivation:
 ======
-
 In the first part, I employ Gaussian Mixture Models (GMM) to cluster songs according to their audio features, and use decision trees to interpret these groupings. My aim is to explore the data and gain insight into how songs can be grouped.  
 
 In the second part, I use various natural language processing (NLP) techniques to recommend songs based on the podcast episode descriptions and different string representations of songs. The primary objective is to create a blend of podcast episodes and songs based on similar themes, topics, and overall mood. 
@@ -54,13 +53,13 @@ Part 1: Grouping Songs
 ------  
 
 To conduct some exploratory analysis, the songs were grouped using Gaussian Mixture Models (GMM) based on their Spotify audio features. As an example, I set the number of components to be 5. While humans may naturally categorize songs by genre, the distribution of genres within each group showed no discernable pattern, as shown below:  
-![Alt Text](genres_per_group.jpg)  
+![](/images/genres_per_group.jpg)  
 Consequently, I used a decision tree classifier to gain insight into how the data was split into groups. One limitation of using a tree classifier to gain interpretability is the depth of the tree. To address this, I developed a simple function that evaluates the tree’s performance across varying max_depth settings. It then identifies the maximum accuracy and determines the accuracy within a user-defined range of this maximum accuracy. Using the max_depth corresponding to the latter reduces the max_depth of the tree, thus making it more interpretable.   
-![Alt Text](accuracy_plot.jpg)  
+![](/images/accuracy_plot.jpg)  
 The final visualization of the tree model was facilitated using the tree.plot_tree function:   
-![Alt Text](song_tree.jpg)  
+![](/images/song_tree.jpg)  
 With a test accuracy of 95.73%, the class-wise accuracy is shown below:  
-![Alt Text](class_accuracy.png)  
+![](/images/class_accuracy.png)  
 In performing GMM, the features were standardized by centering them around the mean and scaling to unit variance via StandardScaler(). Thus, the threshold values depicted below correspond to ~N(0,1). These values were subsequently converted back to their original scale for the following summary:  
 
 **Group 0**:  
@@ -114,7 +113,7 @@ Part 1: Grouping Songs
 Part 2: Song Recommendations
 ------
 The complete results can be found in the "podcasts_songs.csv" file [here](https://github.com/sirena-depue/Projects). A small snippet of the results are shown below to show the difference between each of the three prompts:  
-![Alt Text](podcast_recs.png)
+![](/images/podcast_recs.png)
 
 **Audio Feature Description ("description"):**
 As shown above, the song title significantly influences recommendations, leading to a lot of variability. Where “The Daily” is a news podcast, the song recommendations seem promising for just based on the title. However, the song “Breaking News” discusses domestic violence and “Headlines” covers themes of money and success. Recommendations for shows like “It’s Not Only Football” suggest songs with titles referencing the night or weekend, while those for “Crime Junkie” lean towards title implying crime – a closer match to the podcast content, but still disregarding song audio features.
@@ -123,7 +122,7 @@ As shown above, the song title significantly influences recommendations, leading
 As shown above, while the ChatGPT description yields more promising results in terms of contextual content for some podcast episodes, they are not always consistent with the overall mood of the podcast. 
 
 The songs “Pumped Up Kicks” and “Jeremy” discuss troubled youth committing violent acts in schools, which aligns well with the Daily Show Episode “A Guilt Verdict for a Mass Shooter’s Mother”. This song is frequently recommended among political and true crime podcasts. The song “They Own the Media” discusses the manipulation of media narratives by specific entities and is recommended frequently with political and conspiratorial podcasts:  
-![Alt Text](song_counts.png)
+![](/images/song_counts.png)
 
 All songs recommended for “Crime Junkie” contain descriptions of criminal activity, often related to drugs. Despite sharing similar themes, the mood evoked by true crime stories may not align with the mood created by these songs. 
 
