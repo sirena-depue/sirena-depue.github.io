@@ -55,13 +55,13 @@ Part 1: Interpreting High Dimensional Clusters
 The tabular data (Spotify audio features) was first scaled using Standard Scaler to be of zero mean and unit variance. The songs were then clustered using Gaussian Mixture Models (GMM), with 5 clusters chosen for an illustrative example. While humans may naturally categorize songs by genre, the distribution of genres within each group showed no discernable pattern, as shown below: 
 
 <div style="text-align:center">
-  <img src="/images/genres_per_group.jpg" alt="Image" width="600" height="450" />
+  <img src="/images/genres_per_group.jpg" alt="Image" width="700" height="500" />
 </div>
 
 While dimension reduction techniques such as Principal Component Analysis (PCA) are commonly used to interpret clusters, they do not always preserve the high dimensional structure of the data and can be difficult to interpret. Instead, I opted for decision trees, as they naturally partition the feature space. However, this approach is not without limitations. One concern is the depth of the decision tree, which determines the number of decision nodes and therefore adds complexity to the resulting interpretation. To address this, I developed a simple function to access the tree’s performance across various *max_depth* settings and identified the optimal depth that yields the highest accuracy within a user-defined range. Using this method, the tree’s complexity is reduced to a more manageable depth:
 
 <div style="text-align:center">
-  <img src="/images/accuracy_plot.jpg" alt="Image" width="600" height="450" />
+  <img src="/images/accuracy_plot.jpg" alt="Image" width="800" height="600" />
 </div>
 
 The final visualization of the tree model was facilitated using the [tree.plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html) function:   
@@ -73,36 +73,36 @@ The final visualization of the tree model was facilitated using the [tree.plot_t
 With a test accuracy of 95.73%, the class-wise accuracy is shown below:  
 
 <div style="text-align:center">
-  <img src="/images/class_accuracy.png" alt="Image" width="300" height="200" />
+  <img src="/images/class_accuracy.jpg" alt="Image" width="250" height="150" />
 </div>
 
 As stated above, the features were standardized and therefore the threshold values depicted below are of ~N(0,1). These values were subsequently converted back to their original scale for the following summary:
 
-**Group 0**:  
+**Cluster 0**:  
  - Non-instrumental tracks with a time signature between 3.5 and 4.5    
 (Instrumentalness = 0, 3.5 < Time signature <= 4.5)  
 
-**Group 1**:  
-&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with few vocals and a time signature less than 3.5  
-&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness = 0, Time signature ≤ 3.5, Speechiness ≤ 0.05)  
-&nbsp;&nbsp;&nbsp;&nbsp;AND   
-&nbsp;&nbsp;&nbsp;&nbsp;Tracks with a tempo greater than 185 and a time signature less than 3.5  
-&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness > 0, Time signature ≤ 3.5, Tempo > 185)    
-**Group 2**:  
-&nbsp;&nbsp;&nbsp;&nbsp;Tracks with a tempo less than 185 and a time signature less than 3.5  
-&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness > 0, Time signature ≤ 3.5, Tempo ≤ 185)  
-&nbsp;&nbsp;&nbsp;&nbsp;AND    
-&nbsp;&nbsp;&nbsp;&nbsp;Tracks that are likely to be live with a time signature greater than 3.5.  
-&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness > 0, Time signature > 3.5, Liveness > 0.83)  
-**Group 3**:    
-&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with some vocals and time signature less than 3.5.  
-&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness = 0, Time signature ≤ 3.5, Speechiness > 0.05)     
-&nbsp;&nbsp;&nbsp;&nbsp;AND   
-&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with a time signature greater than 4.5    
-&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness = 0, Time signature > 4.5)     
-**Group 4**:   
-&nbsp;&nbsp;&nbsp;&nbsp;Tracks with a time signature less than 3.5   
-&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness > 0, Time signature > 3.5, Liveness ≤ 0.83)     
+**Cluster 1**:  
+ - Non-instrumental tracks with few vocals and a time signature less than 3.5  
+(Instrumentalness = 0, Speechiness ≤ 0.05, Time signature ≤ 3.5)  
+ - Tracks with a tempo greater than 185 and a time signature less than 3.5  
+(Instrumentalness > 0, Tempo > 185, Time signature ≤ 3.5)    
+
+**Cluster 2**:  
+ - Tracks with a tempo less than 185 and a time signature less than 3.5  
+(Instrumentalness > 0, Tempo ≤ 185, Time signature ≤ 3.5)  
+ - Tracks that are likely to be live with a time signature greater than 3.5.  
+(Instrumentalness > 0, Liveness > 0.83, Time signature > 3.5)  
+
+**Cluster 3**:    
+ - Non-instrumental tracks with some vocals and time signature less than 3.5.  
+(Instrumentalness = 0, Speechiness > 0.05, Time signature ≤ 3.5)     
+ - Non-instrumental tracks with a time signature greater than 4.5    
+(Instrumentalness = 0, Time signature > 4.5)     
+
+**Cluster 4**:   
+ - Tracks with a time signature less than 3.5   
+(Instrumentalness > 0, Liveness ≤ 0.83, Time signature > 3.5)     
 
 Although this does provide insight into the clusters, there are some limitations with the provided tree. Where instrumentalness is a confidence measure ranging from 0.0-1.0, an instrumental threshold of 0 implies songs with a value ≤ 0 are *not* instrumental, but the level of instrumentalness for songs with a value > 0 is ambiguous. Similarly, a threshold value of 0.05 for speechiness provides little information for songs with a value > 0.05. 
 
@@ -137,7 +137,10 @@ Format: The song “*song name*” is in the “*genre*” genre. It is a “*au
 **RESULTS**  
 
 The complete results can be found in the "podcasts_songs.csv" file [here](https://github.com/sirena-depue/Projects). A small snippet of the results are shown below to show the difference between each of the three prompts:  
-![](/images/podcast_recs.png)
+
+<div style="text-align:center">
+  <img src="/images/podcast_recs.png" alt="Image" width="800" height="600" />
+</div>
 
 **Audio Feature Description ("description"):**
 As shown above, the song title significantly influences recommendations, leading to a lot of variability. Where “The Daily” is a news podcast, the song recommendations seem promising just based on the song titles. However, the song “Breaking News” discusses domestic violence and “Headlines” covers themes of money and success. Recommendations for shows like “It’s Not Only Football” suggest songs with titles referencing the night or weekend, while those for “Crime Junkie” lean towards title implying crime – a closer match to the podcast content, but still disregarding song audio features.
@@ -147,7 +150,9 @@ As shown above, while the ChatGPT description yields more promising results in t
 
 The songs “Pumped Up Kicks” and “Jeremy” discuss troubled youth committing violent acts in schools, which aligns well with the Daily Show Episode “A Guilt Verdict for a Mass Shooter’s Mother”. This song is frequently recommended among political and true crime podcasts. The song “They Own the Media” discusses the manipulation of media narratives by specific entities and is recommended frequently with political and conspiratorial podcasts:  
 
-![](/images/song_counts.png)
+<div style="text-align:center">
+  <img src="/images/song_counts.png" alt="Image" width="600" height="400" />
+</div>
 
 All songs recommended for “Crime Junkie” contain descriptions of criminal activity, often related to drugs. Despite sharing similar themes, the mood evoked by true crime stories may not align with the mood created by these songs. 
 
