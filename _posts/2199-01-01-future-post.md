@@ -14,7 +14,6 @@ This project used the Spotify API to obtain song and pocast data, as well as the
 
 The Data:
 ======  
-This project uses data from songs and podcast episodes obtained via the Spotify API.  
 
 Podcast Episodes:  
 ------
@@ -56,42 +55,54 @@ Part 1: Interpreting High Dimensional Clusters
 The tabular data (Spotify audio features) was first scaled using Standard Scaler to be of zero mean and unit variance. The songs were then clustered using Gaussian Mixture Models (GMM), with 5 clusters chosen for an illustrative example. While humans may naturally categorize songs by genre, the distribution of genres within each group showed no discernable pattern, as shown below: 
 
 <div style="text-align:center">
-  <img src="/images/genres_per_group.jpg" alt="Image" width="400" height="300" />
+  <img src="/images/genres_per_group.jpg" alt="Image" width="600" height="450" />
 </div>
 
 While dimension reduction techniques such as Principal Component Analysis (PCA) are commonly used to interpret clusters, they do not always preserve the high dimensional structure of the data and can be difficult to interpret. Instead, I opted for decision trees, as they naturally partition the feature space. However, this approach is not without limitations. One concern is the depth of the decision tree, which determines the number of decision nodes and therefore adds complexity to the resulting interpretation. To address this, I developed a simple function to access the tree’s performance across various *max_depth* settings and identified the optimal depth that yields the highest accuracy within a user-defined range. Using this method, the tree’s complexity is reduced to a more manageable depth:
 
 <div style="text-align:center">
-  <img src="/images/accuracy_plot.jpg" alt="Image" width="400" height="300" />
+  <img src="/images/accuracy_plot.jpg" alt="Image" width="600" height="450" />
 </div>
 
 The final visualization of the tree model was facilitated using the [tree.plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html) function:   
 
 <div style="text-align:center">
-  <img src="/images/song_tree.jpg" alt="Image" width="400" height="300" />
+  <img src="/images/song_tree.jpg" alt="Image" width="800" height="600" />
 </div>
 
 With a test accuracy of 95.73%, the class-wise accuracy is shown below:  
 
 <div style="text-align:center">
-  <img src="/images/class_accuracy.png" alt="Image" width="400" height="300" />
+  <img src="/images/class_accuracy.png" alt="Image" width="300" height="200" />
 </div>
 
 As stated above, the features were standardized and therefore the threshold values depicted below are of ~N(0,1). These values were subsequently converted back to their original scale for the following summary:
 
 **Group 0**:  
-&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with a time signature between 3.5 and 4.5 (Instrumentalness = 0, 3.5 < Time signature <= 4.5)   
+ - Non-instrumental tracks with a time signature between 3.5 and 4.5    
+(Instrumentalness = 0, 3.5 < Time signature <= 4.5)  
+
 **Group 1**:  
-&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with few vocals and a time signature less than 3.5 (Instrumentalness = 0, Time signature ≤ 3.5, Speechiness ≤ 0.05) AND  
-&nbsp;&nbsp;&nbsp;&nbsp;Tracks with a tempo greater than 185 and a time signature less than 3.5 (Instrumentalness > 0, Time signature ≤ 3.5, Tempo > 185)  
+&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with few vocals and a time signature less than 3.5  
+&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness = 0, Time signature ≤ 3.5, Speechiness ≤ 0.05)  
+&nbsp;&nbsp;&nbsp;&nbsp;AND   
+&nbsp;&nbsp;&nbsp;&nbsp;Tracks with a tempo greater than 185 and a time signature less than 3.5  
+&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness > 0, Time signature ≤ 3.5, Tempo > 185)    
 **Group 2**:  
-&nbsp;&nbsp;&nbsp;&nbsp;Tracks with a tempo less than 185 and a time signature less than 3.5 (Instrumentalness > 0, Time signature ≤ 3.5, Tempo ≤ 185) AND   
-&nbsp;&nbsp;&nbsp;&nbsp;Tracks that are likely to be live with a time signature greater than 3.5. Instrumentalness > 0, Time signature > 3.5, Liveness > 0.83    
+&nbsp;&nbsp;&nbsp;&nbsp;Tracks with a tempo less than 185 and a time signature less than 3.5  
+&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness > 0, Time signature ≤ 3.5, Tempo ≤ 185)  
+&nbsp;&nbsp;&nbsp;&nbsp;AND    
+&nbsp;&nbsp;&nbsp;&nbsp;Tracks that are likely to be live with a time signature greater than 3.5.  
+&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness > 0, Time signature > 3.5, Liveness > 0.83)  
 **Group 3**:    
-&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with some vocals and time signature less than 3.5. (Instrumentalness = 0, Time signature ≤ 3.5, Speechiness > 0.05)  
-&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with a time signature greater than 4.5 (Instrumentalness = 0, Time signature > 4.5)  
+&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with some vocals and time signature less than 3.5.  
+&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness = 0, Time signature ≤ 3.5, Speechiness > 0.05)     
+&nbsp;&nbsp;&nbsp;&nbsp;AND   
+&nbsp;&nbsp;&nbsp;&nbsp;Non-instrumental tracks with a time signature greater than 4.5    
+&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness = 0, Time signature > 4.5)     
 **Group 4**:   
-&nbsp;&nbsp;&nbsp;&nbsp;Tracks with a time signature less than 3.5 (Instrumentalness > 0, Time signature > 3.5, Liveness ≤ 0.83)   
+&nbsp;&nbsp;&nbsp;&nbsp;Tracks with a time signature less than 3.5   
+&nbsp;&nbsp;&nbsp;&nbsp;(Instrumentalness > 0, Time signature > 3.5, Liveness ≤ 0.83)     
 
 Although this does provide insight into the clusters, there are some limitations with the provided tree. Where instrumentalness is a confidence measure ranging from 0.0-1.0, an instrumental threshold of 0 implies songs with a value ≤ 0 are *not* instrumental, but the level of instrumentalness for songs with a value > 0 is ambiguous. Similarly, a threshold value of 0.05 for speechiness provides little information for songs with a value > 0.05. 
 
@@ -145,7 +156,7 @@ The recommendations for “It’s Not only Football” discuss enjoying good com
 Future Improvements:
 ======
 Part 1: Interpreting High Dimensional Clusters
-------
+------  
 
 As discussed earlier, the depth of a decision tree can effect the ease of interpreting clusters. Experimenting with different trees and manually parsing out the rules for each class is tedious and in an attempt to simplify this process, I reduced the depth to a satisfactory accuracy level. However, implementing a function to extract rules for each class would streamline the process and facilitate the assessment of the tree's interpretability. This would also allow the user to more easily experiment with trees of greater depth, which may also reduce the issue of ambiguity associated with very low or high threshold values in the decision nodes. 
 
