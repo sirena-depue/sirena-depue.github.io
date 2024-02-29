@@ -158,15 +158,16 @@ All songs recommended for “Crime Junkie” contain descriptions of criminal ac
 
 The recommendations for “It’s Not only Football” discuss enjoying good company and participating in recreational activities. Except for “Get you Mad” by Eminem, all suggested songs for the Sanctified podcast are gospel/worship songs. 
 
-Future Improvements:
-======  
 
-Part 1: Interpreting High Dimensional Clusters  
+Future Improvements:   
+======   
+
+Part 1: Interpreting High Dimensional Clusters   
 ------  
 
 As discussed earlier, the depth of a decision tree can effect the ease of interpreting clusters. Experimenting with different trees and manually parsing out the rules for each class is tedious and in an attempt to simplify this process, I reduced the depth to a satisfactory accuracy level. However, implementing a function to extract rules for each class would streamline the process and facilitate the assessment of the tree's interpretability. This would also allow the user to more easily experiment with trees of greater depth, which may also reduce the issue of ambiguity associated with very low or high threshold values in the decision nodes. 
 
-Part 2: Song Recommendations
+Part 2: Semantic Search for Podcast and Song Pairings
 ------
 
 The aim behind the ChatGPT responses was to pair podcasts and songs based on similar content. However, this did not always perform well, especially when some of podcast descriptions are overly broad or episode descriptions lack detail. Additionally, the current approach fails to consider the mood conveyed by both the songs and episodes. While using Spotify’s audio features (energy, danceability, etc.) was meant to address this, the results often prioritize song titles over these features. 
