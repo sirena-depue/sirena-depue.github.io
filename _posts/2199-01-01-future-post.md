@@ -9,13 +9,15 @@ tags:
 
 Motivation:
 ======
-This project uses data from both songs and podcasts obtained via the Spotify API. In the first part, I employ Gaussian Mixture Models (GMM) to cluster songs according to their audio features, and use decision trees to interpret these groupings. My aim is to explore the data and gain insight into how songs can be grouped.  
+
+In the first part, I employ Gaussian Mixture Models (GMM) to cluster songs according to their audio features, and use decision trees to interpret these groupings. My aim is to explore the data and gain insight into how songs can be grouped.  
 
 In the second part, I use various natural language processing (NLP) techniques to recommend songs based on the podcast episode descriptions and different string representations of songs. The primary objective is to create a blend of podcast episodes and songs based on similar themes, topics, and overall mood. 
 
 
 The Data:
 ======  
+This project uses data from both songs and podcasts obtained via the Spotify API.  
 
 Podcast Episodes:  
 ------
