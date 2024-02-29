@@ -59,9 +59,8 @@ Consequently, I used a decision tree classifier to gain insight into how the dat
 The final visualization of the tree model was facilitated using the tree.plot_tree function:   
 ![](/images/song_tree.jpg)  
 With a test accuracy of 95.73%, the class-wise accuracy is shown below:  
-![](/images/class_accuracy.png)  
 <div style="text-align:center">
-  <img src="/images/class_accuracy.png" alt="Image" />
+  <img src="/images/class_accuracy.png" alt="Image" width="400" height="300" />
 </div>
 In performing GMM, the features were standardized by centering them around the mean and scaling to unit variance via StandardScaler(). Thus, the threshold values depicted below correspond to ~N(0,1). These values were subsequently converted back to their original scale for the following summary:  
 
