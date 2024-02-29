@@ -46,10 +46,12 @@ Song Lyrics:
 ------
 In addition to song information being pulled from Spotify, the lyrics for each song were obtained using the Genius API. 
 
-Design:
-======
-Part 1: Grouping Songs
-------
+Design:  
+======  
+
+Part 1: Grouping Songs  
+------  
+
 To conduct some exploratory analysis, the songs were grouped using Gaussian Mixture Models (GMM) based on their Spotify audio features. As an example, I set the number of components to be 5. While humans may naturally categorize songs by genre, the distribution of genres within each group showed no discernable pattern, as shown below:  
 ![Alt Text](genres_per_group.jpg)  
 Consequently, I used a decision tree classifier to gain insight into how the data was split into groups. One limitation of using a tree classifier to gain interpretability is the depth of the tree. To address this, I developed a simple function that evaluates the tree’s performance across varying max_depth settings. It then identifies the maximum accuracy and determines the accuracy within a user-defined range of this maximum accuracy. Using the max_depth corresponding to the latter reduces the max_depth of the tree, thus making it more interpretable.   
