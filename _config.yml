@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Sirena DePue"
-  avatar           : "bio_photo.jpg"
+  avatar           : "images/bio_photo.jpg"
   bio              : "Data Science at UT Austin | Previously MechE at Lockheed Martin"
   location         : "Cambridge, MA"
   employer         :
