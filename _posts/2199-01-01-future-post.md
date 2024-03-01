@@ -1,6 +1,6 @@
 ---
-title: 'Spotify Song Recommender'
-date: 2199-01-01
+title: 'Spotify Multimedia Recommender'
+date: March 1st, 2024
 permalink: /posts/2012/08/blog-post-4/
 tags:
   - NLP
@@ -8,9 +8,9 @@ tags:
 ---
 
 
-Motivation:
+Overview:
 ======
-This project used the Spotify API to obtain song and pocast data, as well as the Genius API to obtain song lyrics. This project involved clustering songs based on their Spotify audio features using Gaussian Mixture Models (GMM). Despite the natural approach to cluster by genre, the distribution of genres within each cluster did not exhibit discernible patterns. To interpret the clusters, decision trees were employed, with attention given to managing the tree's depth to balance interpretability and accuracy. This project also aimed to create a curated blend of podcast episodes and songs based on shared themes and moods. The process involved encoding podcast descriptions using a pre-trained sentence transform model and converting song data into textual representations, encompassing key audio features and summarized lyrical content
+This project used the Spotify API to obtain song and pocast data, as well as the Genius API to obtain song lyrics. The first part involved clustering songs based on their Spotify audio features using gaussian mixture models (GMM). Despite the natural approach to cluster by genre, the distribution of genres within each cluster did not exhibit discernible patterns. To interpret the clusters, decision trees were employed, with attention given to managing the tree's depth to balance interpretability and accuracy. This project also aimed to create a curated blend of podcast episodes and songs based on shared themes and moods. The process involved converting song data into textual representations, encompassing key audio features and summarized lyrical content, then encoding podcast and song descriptions using a pre-trained sentence-BERT model. 
 
 The Data:
 ======  
@@ -24,7 +24,7 @@ Songs:
 The Spotify API does not provide the genre of a specific song. Rather, there are genres associated with the artist and sometimes associated with an album. The genres can also be very specific and sometimes even specify the state or city, such as “Ohio Pop” and “Toronto Pop”. To simplify the data collection, I downloaded and used the top 100 songs of various genres from [TopCharts](https://www.top-charts.com/songs/alternative/united-states/total/2021-W19) and [Shazam](https://www.shazam.com/charts/genre/united-states/country). This also guaranteed a collection of songs from less mainstream genres such as blues, jazz, and gospel. In total, the data for 1,405 songs were collected. The distribution of genres is shown below:  
 
 <div style="text-align:center">
-  <img src="/images/genres.jpg" alt="Image" width="400" height="300" />
+  <img src="/images/genres.jpg" alt="Image" width="500" height="400" />
 </div>
 
 
@@ -109,7 +109,7 @@ Although this does provide insight into the clusters, there are some limitations
 Part 2: Semantic Search for Podcast and Song Pairings
 ------
 
-The goal for the second part of this project was to create a blend of podcast episodes and songs based on similar themes and mood. To do this, I used a pre-trained sentence transform model, [all-mpnet-base-v2](https://www.sbert.net/docs/pretrained_models.html), to encode all podcast descriptions and find the top three matching songs for each episode. While podcast descriptions are readily available in natural language form, the song data necessitated conversion from tabular to a text represenation. The audio features used in this conversion included energy, danceability, loudness, valence, instrumentalness, and acousticness (see #1 below). While this representation is meant to gauge the overall mood of the song, it fails to address the thematic content of a song. 
+The goal for the second part of this project was to create a blend of podcast episodes and songs based on similar themes and mood. To do this, I used a pre-trained sentence-BERT model, [all-mpnet-base-v2](https://www.sbert.net/docs/pretrained_models.html), to encode all podcast descriptions and find the top three matching songs for each episode. While podcast descriptions are readily available in natural language form, the song data necessitated conversion from tabular to a text represenation. The audio features used in this conversion included energy, danceability, loudness, valence, instrumentalness, and acousticness (see #1 below). While this representation is meant to gauge the overall mood of the song, it fails to address the thematic content of a song. 
 
 To address this, the song lyrics were obtained via the Genius API. Initially a BART model trained on CNN Daily Mail, [facebook/vart-large-cnn](https://huggingface.co/facebook/bart-large-cnn), was used to summarize the lyrics. Where the BART model was trained on news articles, it did a poor job of extracting the abstract meaning of the lyrics, and sometimes produced summaries resembling news blurbs:
 

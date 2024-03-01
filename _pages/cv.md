@@ -17,7 +17,7 @@ Education
 
 Work Experience
 ======
-Sikorsky Aircraft, Lockheed Martin, Structural Analyst: January 2021 - August 2023
+**Sikorsky Aircraft, Lockheed Martin**, *Structural Analyst*,   &nbsp;&nbsp;&nbsp;&nbsp;   January 2021 - August 2023
 * Primary role was to evaluate the structural integrity of systems using hand calculations and finite element analysis to inform design iterations and meet design requirements. 
 
 *Project 1: Test Data Review Automation*
@@ -25,7 +25,7 @@ Sikorsky Aircraft, Lockheed Martin, Structural Analyst: January 2021 - August 20
 
 *Project 2: Sizing Update Automation*
 * Developed a Python program to standardize and automate the process of updating sizing information in a simulated aircraft model, with a focus on checking user inputs and writing test cases.
-* Estimated to save 1600 hours of manual processes over several design phases.
+* Estimated to save 1600 hours of manual processes over several design phases while standardizing the sizing update process. 
 
 *Project 3: Helicopter Maneuver Classification*
 * Classified groups of helicopter maneuvers based on operational, multi-dimensional time series data through the 18-week Artificial Intelligence and Machine Learning Fundamentals program. 
@@ -34,20 +34,25 @@ Sikorsky Aircraft, Lockheed Martin, Structural Analyst: January 2021 - August 20
 
 Project Experience
 ======
-Spotify Project: Dec. 2024 – Feb. 2024
-* Utilized Spotify API to retrieve podcast episode descriptions and audio features for over 1000 songs.
-* Used ChatGPT API to summarize the lyrics of the song and Sentence BERT Transformer to recommend songs based on the podcast episode descriptions. 
-* Implemented a Gaussian Mixture Model to cluster songs based on their audio features, feeding the results into classification trees to gain interpretability insights from the data.  
+**Multimedia Recommender**,   &nbsp;&nbsp;&nbsp;&nbsp;    Dec. 2024 – Feb. 2024
+* Generated song recommendations for podcast episodes based on similar themes and mood using a pre-trained sentence-BERT model to encode podcast and song descriptions.
+* Created text representations of songs using audio features sourced from the Spotify API. Obtained song lyrics from the Genius API, which were then used to summarize the lyrics from the OpenAI API.
+* Clustered songs by their audio features using a gaussian mixture model, and interpreted clusters with decision trees.
 
-Distracted Driver Monitor Project, Embedded System Design (ECE 5725): Fall 2021                                                 
+
+**Distracted Driver Monitor**, *Embedded System Design (ECE 5725)*,&nbsp;&nbsp;&nbsp;&nbsp;Fall 2021                                                 
 * Created and deployed an application on a Raspberry Pi that receives streaming Pi camera footage along with real-time vehicle speed data to monitor and alert drivers when they are distracted with the car in motion. 
 * Used OpenCV and DLib to detect a face and extract facial features and determine whether the driver is drowsy, facing away, or looking away from the road. 
 * Accessed real-time vehicle speed from OBDII scanner to inform the onboard system whether to sound an alarm
-  
+
+**Cornell Masters Project**, *Graduate Student Researcher*,   &nbsp;&nbsp;&nbsp;&nbsp;   Jan. 2021 – Dec. 2021
+* Developing attitude maneuvers for spacecraft without use of propellent and quantified resulting change in the orbital plane using a six degrees of freedom MATLAB Simulink model.
+* Validated results by verifying conservation of linear and angular momentum, as well as attaining machine precision by iterating through step sizes and different solvers. 
+
 Skills
 ======
 Languages: Python, MATLAB, Java
 
-Libraries/Frameworks: pytorch, NumPy, pandas, scikit-learn, tsfresh
+Libraries/Frameworks: PyTorch, NumPy, pandas, scikit-learn, tsfresh
 
 
