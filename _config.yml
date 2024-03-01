@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "About Me"
+title                    : ""
 title_separator          : "-"
 name                     : &name "Sirena DePue"
 description              : &description "Data Science at UT Austin | Previously MechE at Lockheed Martin"
