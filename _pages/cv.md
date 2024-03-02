@@ -17,7 +17,7 @@ Education
 
 Work Experience
 ======
-**Sikorsky Aircraft, Lockheed Martin**, *Structural Analyst*,   &nbsp;&nbsp;&nbsp;&nbsp;   January 2021 - August 2023
+**Sikorsky Aircraft, Lockheed Martin**, *Structural Analyst*,   &nbsp;&nbsp;&nbsp;&nbsp;   January 2022 - August 2023
 * Primary role was to evaluate the structural integrity of systems using hand calculations and finite element analysis to inform design iterations and meet design requirements. 
 
 *Project 1: Test Data Review Automation*
@@ -34,7 +34,7 @@ Work Experience
 
 Project Experience
 ======
-**Multimedia Recommender**,   &nbsp;&nbsp;&nbsp;&nbsp;    Dec. 2024 – Feb. 2024
+**Multimedia Recommender**,   &nbsp;&nbsp;&nbsp;&nbsp;    Dec. 2023 – Feb. 2024
 * Generated song recommendations for podcast episodes based on similar themes and mood using a pre-trained sentence-BERT model to encode podcast and song descriptions.
 * Created text representations of songs using audio features sourced from the Spotify API. Obtained song lyrics from the Genius API, which were then used to summarize the lyrics from the OpenAI API.
 * Clustered songs by their audio features using a gaussian mixture model, and interpreted clusters with decision trees.
