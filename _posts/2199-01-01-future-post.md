@@ -1,5 +1,5 @@
 ---
-title: 'Spotify Multimedia Recommender'
+title: 'Podcast and Song Composer'
 date: March 1st, 2024
 permalink: /posts/2012/08/blog-post-4/
 tags:
