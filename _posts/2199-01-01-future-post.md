@@ -136,7 +136,7 @@ Format: The song “*song name*” is in the “*genre*” genre. It is a “*au
 
 **RESULTS**  
 
-The complete results can be found in the "podcasts_songs.csv" file [here](https://github.com/sirena-depue/Projects). A small snippet of the results are shown below to show the difference between each of the three prompts:  
+The complete results can be found in the "podcasts_songs.csv" file [here](https://github.com/sirena-depue/spotify_project). A small snippet of the results are shown below to show the difference between each of the three prompts:  
 
 <div style="text-align:center">
   <img src="/images/podcast_recs.png" alt="Image" width="800" height="600" />
