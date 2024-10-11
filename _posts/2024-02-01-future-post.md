@@ -1,6 +1,6 @@
 ---
 title: 'Distracted Driver Monitor'
-date: December 1st, 2021
+date: December 20th, 2021
 permalink: /posts/2012/08/blog-post-3/
 tags:
   - CV
@@ -13,6 +13,7 @@ The purpose of this project is to create a self-contained system that monitors a
 
 Interface and Alarm System:
 ======  
+
 Interface:
 ------
 
@@ -65,7 +66,7 @@ Another feature we implemented was using real-time car speed data to determine w
 
 
 Future Improvements:
-------
+======  
 
 One potential extension of the OBDII would be to consider the direction of the car's travel. If the driver was reverse or parallel parking, this would require the person to look behind them, thus triggering an unnecessary alarm. Either we could use the OBDII to determine when the car is in reverse and disable the alarms, or there could be a physical button for the driver to momentarily disable the alarms (for 2-3 minutes), while the person parks. 
 
