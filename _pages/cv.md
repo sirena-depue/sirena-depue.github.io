@@ -12,7 +12,7 @@ redirect_from:
 Education
 ======
 **University of Texas at Austin, College of Computer & Data Science** <br />
-Master of Data Science, **GPA: 3.96** Expected Dec. 2024 <br />
+Master of Data Science, **GPA: 3.96**, Expected Dec. 2024 <br />
 Relevant Coursework: Machine Learning, Deep Learning, Algorithms, Data Science for Healthcare
 
 **Cornell University, College of Engineering** <br />
